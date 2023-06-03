@@ -6,6 +6,7 @@ const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
+
   const handleFileChange = (event) => {
 
     setSelectedFile(event.target.files[0]);
@@ -22,21 +23,30 @@ const FileUpload = () => {
   };
 
   const handleUpload = () => {
-    if (selectedFile && (selectedFile.type === 'application/pdf') || (selectedFile.type === 'text/plain')) {
-      console.log(selectedFile);
-      setUploadedFiles(uploadedFiles => [...uploadedFiles, selectedFile]);
-
-    } else {
-      alert('Only PDF files are allowed.');
+    if (selectedFile === null){
+      alert('No file was selected.');
+      return 
     }
-
+    if (selectedFile && (selectedFile.type === 'application/pdf') || (selectedFile.type === 'text/plain')) {
+      //console.log(selectedFile);
+      popUpCard(selectedFile)
+      if (!uploadedFiles.includes(selectedFile)) {
+        setUploadedFiles(uploadedFiles => [...uploadedFiles, selectedFile]);
+      }
+    } else {
+      alert('Only .pdf and .txt files are allowed.');
+    }
   };
 
-  
+  const popUpCard = (File) => {
+    //todo
+
+    console.log(File);
+  }
+
 
   return (
     <div className="wrapper">
-
       <div className="container">
         <div className="header">
           <h1>Flashcard Generation through AI</h1>
@@ -63,7 +73,7 @@ const FileUpload = () => {
             <h3>Uploaded Files History</h3>
             <div className="list-group">
               {uploadedFiles.map((file, index) => (
-                <button type="button" class="list-group-item list-group-item-action">
+                <button type="button" class="list-group-item list-group-item-action" onClick={() => popUpCard(file)}>
                   {file.name}
                 </button>
               ))}
@@ -71,15 +81,11 @@ const FileUpload = () => {
           </div>
         </div>
         </div>
-
       </div>
-
       <footer className="footer">
         &copy; {new Date().getFullYear()} Iteratec Cloud-Hackathon. All rights reserved.
       </footer>
     </div>
-
-    
   );
 };
 
