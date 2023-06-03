@@ -3,6 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import './FileUpload.css';
 import Cards from "./Cards/Cards";
 import Icon from './img/ic-icon-header.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const FileUpload = () => {
@@ -49,8 +50,13 @@ const FileUpload = () => {
 
     console.log(selectedFile)
     return (
-      <Modal show={showModal} onHide={() => setShowModal(false)} style={{height: '350px'}}>
-        <Cards />
+      <Modal
+        aria-labelledby="contained-modal-title-vcenter"  
+        centered show={showModal} 
+        onHide={() => setShowModal(false)} 
+        className="w-100 p-3" 
+        style={{ color: "#fff" }}>
+          <Cards />
       </Modal>
     );
   }

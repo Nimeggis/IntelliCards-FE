@@ -1,12 +1,11 @@
 .card {
-  margin: 10px auto;
+  margin: 20px auto;
   background: linear-gradient(#c75600, #f88d35);
-  height: 350px;
-  width: 350px;
+  height: 250px !important;
+  width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* flex-direction: column; */
   color: #ffffff;
   font-size: 24px;
   font-weight: 400;
@@ -123,5 +122,3 @@ body {
   justify-content: center;
 }
 
-
-  
