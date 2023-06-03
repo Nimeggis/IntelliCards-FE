@@ -13,12 +13,9 @@ const Cards = () => {
     { id: "aa1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "3333", side2: "af edwe2n toe"}},
     { id: "grgrg1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "44444", side2: "af edwdn toe"}}];
 
-
-
-
-    useEffect(()=>{
-		setFlashcarddata(fakeCards);
-	}, [])
+  useEffect(()=>{
+    setFlashcarddata(fakeCards);
+  }, [])
     
 
   const cards = flashcarddata.map((card) => {
