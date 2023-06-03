@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import "./CardsStyles.css";
-
 import Card from "./Card";
+import { FaThumbsUp } from 'react-icons/fa';
+import { FaThumbsDown } from 'react-icons/fa';
 
 const Cards = () => {
 
@@ -26,14 +27,29 @@ const Cards = () => {
 
   return (
     <div>
-        <Carousel activeIndex={current} onSelect={handleSelect}>
+      <Carousel activeIndex={current} onSelect={handleSelect}>
          {flashcarddata.map((card) => (
             <Carousel.Item>
                 <Card card={card} key={card.id} />
             </Carousel.Item>
          ))}
-    </Carousel>
-    
+      </Carousel>
+      <div className="nav">
+        {current > 0 ? (
+          <button class="flashTrue"><FaThumbsUp/> Knew it!</button>
+        ) : (
+          <button className="disabled flashTrue" disabled>
+            <FaThumbsUp/> Knew it!
+          </button>
+        )}
+        {current > 0 ? (
+          <button class="flashFalse"><FaThumbsDown/> Didn't know</button>
+        ) : (
+          <button className="disabled flashFalse" disabled>
+            <FaThumbsDown/> Didn't know
+          </button>
+        )}
+      </div>
     </div>
 
   );
