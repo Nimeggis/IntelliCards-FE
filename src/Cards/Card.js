@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 
-const Card = ({ card }) => {
+const Card = ({ parentCallback, card }) => {
 
   const [side, setSide] = useState();
 
-  function handleClick() {
-    console.log("clicked!");
+  const handleClick = () => {
     setSide(!side);
-    console.log(side);
+    parentCallback(side);
   }
 
   return (

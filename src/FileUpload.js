@@ -51,14 +51,17 @@ const FileUpload = () => {
 
     console.log(selectedFile)
     return (
-      <Modal
-        aria-labelledby="contained-modal-title-vcenter"  
-        centered show={showModal} 
-        onHide={() => setShowModal(false)} 
-        className="w-100 p-3" 
-        style={{ color: "#fff" }}>
-          <Cards />
-      </Modal>
+      <div>
+        <Modal
+          aria-labelledby="contained-modal-title-vcenter"  
+          centered show={showModal} 
+          onHide={() => setShowModal(false)} 
+          className="w-100 p-3" 
+          style={{ color: "#fff" }}>
+            <Cards />
+        </Modal>
+      </div>
+        
     );
   }
 
