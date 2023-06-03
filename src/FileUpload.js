@@ -32,7 +32,8 @@ const FileUpload = () => {
       alert('No file was selected.');
       return 
     }
-    if (selectedFile && (selectedFile.type === 'application/pdf') || (selectedFile.type === 'text/plain')) {
+    if ((selectedFile && (selectedFile.type === 'application/pdf')) || (selectedFile.type === 'text/plain')) {
+      //console.log(selectedFile);
       popUpCard(selectedFile)
       if (!uploadedFiles.includes(selectedFile)) {
         setUploadedFiles(uploadedFiles => [...uploadedFiles, selectedFile]);
