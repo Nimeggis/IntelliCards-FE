@@ -26,7 +26,7 @@ const Cards = () => {
 
   return (
     <div>
-        <Carousel activeIndex={current} onSelect={handleSelect}>
+        <Carousel activeIndex={current} onSelect={handleSelect}  interval={1000}>
          {flashcarddata.map((card) => (
             <Carousel.Item>
                 <Card card={card} key={card.id} />
