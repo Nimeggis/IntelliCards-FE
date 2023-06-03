@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import './FileUpload.css';
 
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+
 
 
   const handleFileChange = (event) => {
@@ -22,13 +26,13 @@ const FileUpload = () => {
     event.preventDefault();
   };
 
+
   const handleUpload = () => {
     if (selectedFile === null){
       alert('No file was selected.');
       return 
     }
     if (selectedFile && (selectedFile.type === 'application/pdf') || (selectedFile.type === 'text/plain')) {
-      //console.log(selectedFile);
       popUpCard(selectedFile)
       if (!uploadedFiles.includes(selectedFile)) {
         setUploadedFiles(uploadedFiles => [...uploadedFiles, selectedFile]);
@@ -38,12 +42,31 @@ const FileUpload = () => {
     }
   };
 
-  const popUpCard = (File) => {
-    //todo
 
-    console.log(File);
+  const renderModal = () => {
+
+    console.log(selectedFile)
+    return (
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Flashcard</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>The selected file:  {selectedFile.name}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
   }
 
+  const popUpCard = (File) => {
+    setSelectedFile(File)
+    setShowModal(true);
+  }
 
   return (
     <div className="wrapper">
@@ -73,8 +96,10 @@ const FileUpload = () => {
             <h3>Uploaded Files History</h3>
             <div className="list-group">
               {uploadedFiles.map((file, index) => (
-                <button type="button" class="list-group-item list-group-item-action" onClick={() => popUpCard(file)}>
-                  {file.name}
+                <button type="button" class="list-group-item list-group-item-action"  onClick={() => popUpCard(file)}>
+                  <h6 className="long-string">
+                    {file.name}
+                  </h6>
                 </button>
               ))}
             </div>
@@ -85,6 +110,7 @@ const FileUpload = () => {
       <footer className="footer">
         &copy; {new Date().getFullYear()} Iteratec Cloud-Hackathon. All rights reserved.
       </footer>
+      {showModal && renderModal()}
     </div>
   );
 };
