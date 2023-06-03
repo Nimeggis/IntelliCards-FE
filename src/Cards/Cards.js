@@ -7,15 +7,14 @@ const Cards = () => {
 
   const [flashcarddata, setFlashcarddata] = useState([]);
 
-  const fakeCards = [
-    { id: "rec1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "1111", side2: "af en toe"}},
-    { id: "qec1X3ATCwfeew2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "2222", side2: "af enee2e toe"}},
-    { id: "aa1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "3333", side2: "af edwe2n toe"}},
-    { id: "grgrg1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "44444", side2: "af edwdn toe"}}];
-
   useEffect(()=>{
+    const fakeCards = [
+      { id: "rec1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "1111", side2: "af en toe"}},
+      { id: "qec1X3ATCwfeew2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "2222", side2: "af enee2e toe"}},
+      { id: "aa1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "3333", side2: "af edwe2n toe"}},
+      { id: "grgrg1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "44444", side2: "af edwdn toe"}}];
     setFlashcarddata(fakeCards);
-  }, [fakeCards])
+  }, [])
     
 
   const cards = flashcarddata.map((card) => {
