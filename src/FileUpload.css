@@ -61,3 +61,10 @@ button {
   word-wrap: break-word;
 }
 
+
+.modal {
+  height: 350px;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import './FileUpload.css';
+import Cards from "./Cards/Cards";
 
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
 
 
 
@@ -48,18 +48,8 @@ const FileUpload = () => {
 
     console.log(selectedFile)
     return (
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Flashcard</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>The selected file:  {selectedFile.name}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
+      <Modal show={showModal} onHide={() => setShowModal(false)} style={{height: '350px'}}>
+        <Cards />
       </Modal>
     );
   }
@@ -112,6 +102,7 @@ const FileUpload = () => {
         &copy; {new Date().getFullYear()} Iteratec Cloud-Hackathon. All rights reserved.
       </footer>
       {showModal && renderModal()}
+      
     </div>
   );
 };
