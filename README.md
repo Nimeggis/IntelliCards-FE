@@ -1,2 +1,2 @@
 # IntelliCards-FE
-Flashcard Generation through AI
+Flashcard Generation through AI - Frontend
