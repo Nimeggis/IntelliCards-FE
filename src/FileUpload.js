@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import './FileUpload.css';
 import Cards from "./Cards/Cards";
+import Icon from './img/ic-icon-header.png';
 
 
 const FileUpload = () => {
@@ -61,10 +62,11 @@ const FileUpload = () => {
 
   return (
     <div className="wrapper">
+      <div className="header">
+        <img src={Icon} alt="IntelliCards Icon" class="header-icon"/>
+        <h1>Flashcard Generation through AI</h1>
+      </div>
       <div className="container">
-        <div className="header">
-          <h1>Flashcard Generation through AI</h1>
-        </div>
         <div class="row">
         <div class="col-8">
           <div className="content">
