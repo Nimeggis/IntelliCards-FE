@@ -1,6 +1,6 @@
 import './FileUpload.css';
 import React, { useState } from 'react';
-import {  Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import Cards from './Cards/Cards';
 import Icon from './img/ic-icon-header.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
