@@ -1,7 +1,7 @@
+import './FileUpload.css';
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import './FileUpload.css';
-import Cards from "./Cards/Cards";
+import Cards from './Cards/Cards';
 import Icon from './img/ic-icon-header.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,6 +10,7 @@ const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showModal, setShowModal] = useState(false);
+
 
 
 
@@ -70,11 +71,11 @@ const FileUpload = () => {
     <div className="wrapper">
       <div className="header">
         <img src={Icon} alt="IntelliCards Icon" class="header-icon"/>
-        <h1>Flashcard Generation through AI</h1>
+        <h1>IntelliCards</h1>
       </div>
       <div className="container">
-        <div class="row">
-        <div class="col-8">
+        <div class="row upload-row">
+        <div class="col-12">
           <div className="content">
             <h2>Upload PDF</h2>
             <div className="file-input">
@@ -85,12 +86,12 @@ const FileUpload = () => {
               <p>Drag and drop files here</p>
             </div>
             {selectedFile && <p>Selected file: {selectedFile.name}</p>}
-            <button onClick={handleUpload} className="btn btn-success">
+            <button onClick={handleUpload} className="btn btn-success upload-button">
               Upload
             </button>
           </div>          
         </div>
-        <div class="col-4">
+        <div class="col-12 file-history">
           <div className="content">
             <h3>Uploaded Files History</h3>
             <div className="list-group">
@@ -110,7 +111,6 @@ const FileUpload = () => {
         &copy; {new Date().getFullYear()} Iteratec Cloud-Hackathon. All rights reserved.
       </footer>
       {showModal && renderModal()}
-      
     </div>
   );
 };
