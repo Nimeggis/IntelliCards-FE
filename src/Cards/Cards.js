@@ -15,7 +15,7 @@ const Cards = () => {
 
   useEffect(()=>{
     setFlashcarddata(fakeCards);
-  }, [])
+  }, [fakeCards])
     
 
   const cards = flashcarddata.map((card) => {
