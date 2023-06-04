@@ -97,6 +97,7 @@ const FileUpload = () => {
 
   const renderModal = () => {
     console.log(selectedFile)
+    const paddingValue = showSpinner ? '70px' : '0px';
     return (
       <div>
         <Modal
@@ -107,7 +108,7 @@ const FileUpload = () => {
           style={{ color: "#fff" }}>
             { showCards && <Cards result={result} setResult={setResult} data={data}/>}
             {/*{showModal && renderGauge()}*/}
-            <div style={{display: 'flex', alignItems: 'center', height: '100%', position: 'absolute'}}>
+            <div style={{ alignItems: 'center',  position: 'center', padding: paddingValue, textAlign:'center'}}>
               {showSpinner && 
               <MDBBtn disabled>
                 <MDBSpinner grow size='sm' role='status' tag='span' className='me-2' />
