@@ -12,10 +12,6 @@ const Card = ({ parentCallback, card }) => {
 
   return (
     <div className={`card ${side ? "side" : ""}`} onClick={handleClick}>
-      <small>
-        <span>Card ID</span>
-        {card.id}
-      </small>
       {/* {side ? card.fields.side1 : card.fields.side2} */}
       <div className="front">{card.question}</div>
       <div className="back">{card.answer}</div>
