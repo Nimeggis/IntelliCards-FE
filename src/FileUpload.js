@@ -19,23 +19,21 @@ const FileUpload = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    renderGauge();
-  }, [])
-
-  const renderGauge = () => {
-    return (
-      <div>
-        <GaugeChart id="gauge-chart1" 
-          nrOfLevels={20}
-          colors={["#FF5F6D", "#FFC371"]} 
-          arcWidth={0.3} 
-          percent={result}
-          textColor="#FF5F6D"
-        />
-      </div>
-    )
+    const renderGauge = () => {
+      return (
+        <div>
+          <GaugeChart id="gauge-chart1" 
+            nrOfLevels={20}
+            colors={["#FF5F6D", "#FFC371"]} 
+            arcWidth={0.3} 
+            percent={result}
+            textColor="#FF5F6D"
+          />
+        </div>
+      )
     }
-
+    renderGauge();
+  }, [result])
 
   const handleFileChange = (event) => {
 

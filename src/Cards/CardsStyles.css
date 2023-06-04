@@ -6,16 +6,26 @@
   filter: invert(100%);
 }
 
+.carousel-indicators button{
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 100%;
+}
+
+.modal-dialog {
+  max-width: 700px;
+}
+
 .card {
   margin: 20px auto;
   background: linear-gradient(#c75600, #f88d35);
   height: 250px !important;
-  width: 250px;
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   border-radius: 20px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.1),
@@ -27,6 +37,15 @@
   transform-style: preserve-3d;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
+}
+
+@media (max-width: 680px) {
+	.card { 
+    font-size: 15px;
+  }
+  .nav {
+    width: unset !important;
+  }
 }
 
 /* when card is clicked adding .side class */
@@ -41,6 +60,7 @@
   position: absolute;
   padding: 1rem;
   backface-visibility: hidden;
+  text-align: center;
 }
 
 .card .front {
