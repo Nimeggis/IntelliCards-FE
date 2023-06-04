@@ -5,7 +5,7 @@ import Card from "./Card";
 import { FaThumbsUp } from 'react-icons/fa';
 import { FaThumbsDown } from 'react-icons/fa';
 
-const Cards = () => {
+const Cards = ({result, setResult}) => {
 
   const [flashcarddata, setFlashcarddata] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -13,10 +13,10 @@ const Cards = () => {
   
   //if 0: no response, 1: success, 2:failure
   const [success, setSuccess] = useState(0);
-  const [results, setResults] = useState([]);
+  //const [results, setResults] = useState([]);
 
 
-  useEffect(()=>{
+  useEffect(() => {
     const fakeCards = [
       { id: "rec1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "1111", side2: "af en toe"}},
       { id: "qec1X3ATCwfeew2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "2222", side2: "af enee2e toe"}},
@@ -32,13 +32,16 @@ const Cards = () => {
       setResults(results => [...results, tmp]);
     }
   }, [success])
-   */ 
+   */
 
   const increaseSuccess = () => {
     setSuccess(1);
+    setResult(result+0.1);
   }
   const increaseFailure = () => {
     setSuccess(2);
+    console.log(success);
+    setResult(result+0.1);
   }
 
 
@@ -60,7 +63,7 @@ const Cards = () => {
 
   return (
     <div>
-        <Carousel activeIndex={current} onSelect={handleSelect}>
+        <Carousel activeIndex={current} onSelect={handleSelect} interval={null}>
          {flashcarddata.map((card) => (
             <Carousel.Item>
                 <Card parentCallback={getChildSide} card={card} key={card.id} />

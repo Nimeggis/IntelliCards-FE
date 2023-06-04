@@ -1,17 +1,36 @@
 import './FileUpload.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import Cards from './Cards/Cards';
 import Icon from './img/ic-icon-header.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import GaugeChart from 'react-gauge-chart'
+
 
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [result, setResult] = useState(0)
 
+  useEffect(() => {
+    renderGauge();
+  }, [])
 
+  const renderGauge = () => {
+    return (
+      <div>
+        <GaugeChart id="gauge-chart1" 
+          nrOfLevels={20}
+          colors={["#FF5F6D", "#FFC371"]} 
+          arcWidth={0.3} 
+          percent={result}
+          textColor="#FF5F6D"
+        />
+      </div>
+    )
+    }
 
 
   const handleFileChange = (event) => {
@@ -48,7 +67,6 @@ const FileUpload = () => {
 
 
   const renderModal = () => {
-
     console.log(selectedFile)
     return (
       <div>
@@ -58,7 +76,8 @@ const FileUpload = () => {
           onHide={() => setShowModal(false)} 
           className="w-100 p-3" 
           style={{ color: "#fff" }}>
-            <Cards />
+            <Cards result={result} setResult={setResult}/>
+            {showModal && renderGauge()}
         </Modal>
       </div>
         
