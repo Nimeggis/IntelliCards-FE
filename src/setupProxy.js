@@ -9,6 +9,8 @@ module.exports = function (app) {
       pathRewrite: {
         "^/api": "", // remove the '/api' prefix
       },
+      proxyTimeout: 1000 * 60 * 10,
+      timeout: 1000 * 60 * 10,
     })
   );
 };
