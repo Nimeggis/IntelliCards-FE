@@ -13,7 +13,7 @@ const Cards = () => {
   
   //if 0: no response, 1: success, 2:failure
   const [success, setSuccess] = useState(0);
-  const [results, setResults] = useState([]);
+  //const [results, setResults] = useState([]);
 
 
   useEffect(()=>{
@@ -36,9 +36,11 @@ const Cards = () => {
 
   const increaseSuccess = () => {
     setSuccess(1);
+    console.log(success);
   }
   const increaseFailure = () => {
     setSuccess(2);
+    console.log(success);
   }
 
 
@@ -60,7 +62,7 @@ const Cards = () => {
 
   return (
     <div>
-        <Carousel activeIndex={current} onSelect={handleSelect}>
+        <Carousel activeIndex={current} onSelect={handleSelect} interval={null}>
          {flashcarddata.map((card) => (
             <Carousel.Item>
                 <Card parentCallback={getChildSide} card={card} key={card.id} />
