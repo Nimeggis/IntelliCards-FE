@@ -14,6 +14,7 @@ const FileUpload = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [result, setResult] = useState(0)
+  const [data, setData] = useState([])
 
   useEffect(() => {
     renderGauge();
@@ -75,13 +76,15 @@ const FileUpload = () => {
       const formData = new FormData();
       formData.append("file", file);
       try {
-        const response = await axios.post("/api/file/test", formData, {
+        const request = await axios.post("http://85.214.90.195:9090/file-without-graphql/", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*"
           },
         });
     
-        console.log("Upload response:", response.data);
+        console.log("Sending request:", request.data);
+        setData(request.data);
       } catch (error) {
         console.error("Upload failed:", error);
       }
@@ -98,7 +101,7 @@ const FileUpload = () => {
           onHide={() => setShowModal(false)} 
           className="w-100 p-3" 
           style={{ color: "#fff" }}>
-            <Cards result={result} setResult={setResult}/>
+            <Cards result={result} setResult={setResult} data={data}/>
             {/*{showModal && renderGauge()}*/}
         </Modal>
       </div>

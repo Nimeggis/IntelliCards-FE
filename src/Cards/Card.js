@@ -17,8 +17,8 @@ const Card = ({ parentCallback, card }) => {
         {card.id}
       </small>
       {/* {side ? card.fields.side1 : card.fields.side2} */}
-      <div className="front">{card.fields.side1}</div>
-      <div className="back">{card.fields.side2}</div>
+      <div className="front">{card.question}</div>
+      <div className="back">{card.answer}</div>
     </div>
   );
 }

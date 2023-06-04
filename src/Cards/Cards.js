@@ -5,7 +5,7 @@ import Card from "./Card";
 import { FaThumbsUp } from 'react-icons/fa';
 import { FaThumbsDown } from 'react-icons/fa';
 
-const Cards = ({result, setResult}) => {
+const Cards = ({result, setResult, data}) => {
 
   const [flashcarddata, setFlashcarddata] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -22,8 +22,8 @@ const Cards = ({result, setResult}) => {
       { id: "qec1X3ATCwfeew2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "2222", side2: "af enee2e toe"}},
       { id: "aa1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "3333", side2: "af edwe2n toe"}},
       { id: "grgrg1X3ATCCrXl2csI", createdTime: "2020-11-10T16:59:09.000Z", fields: {side1: "44444", side2: "af edwdn toe"}}];
-    setFlashcarddata(fakeCards);
-  }, [])
+    setFlashcarddata(data);
+  }, [data])
 
   //to do
   /*useEffect(() => {
