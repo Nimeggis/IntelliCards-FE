@@ -5,6 +5,7 @@ import Cards from './Cards/Cards';
 import Icon from './img/ic-icon-header.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GaugeChart from 'react-gauge-chart'
+import axios from 'axios';
 
 
 
@@ -55,6 +56,9 @@ const FileUpload = () => {
       return 
     }
     if ((selectedFile && (selectedFile.type === 'application/pdf')) || (selectedFile.type === 'text/plain')) {
+      
+      sendFile(selectedFile);
+
       //console.log(selectedFile);
       popUpCard(selectedFile)
       if (!uploadedFiles.includes(selectedFile)) {
@@ -65,6 +69,24 @@ const FileUpload = () => {
     }
   };
 
+  const sendFile = async (file) => {  
+    console.log("Sending File...")
+
+      const formData = new FormData();
+      formData.append("file", file);
+      try {
+        const response = await axios.post("/api/file/test", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+    
+        console.log("Upload response:", response.data);
+      } catch (error) {
+        console.error("Upload failed:", error);
+      }
+  };
+  
 
   const renderModal = () => {
     console.log(selectedFile)
@@ -77,7 +99,7 @@ const FileUpload = () => {
           className="w-100 p-3" 
           style={{ color: "#fff" }}>
             <Cards result={result} setResult={setResult}/>
-            {showModal && renderGauge()}
+            {/*{showModal && renderGauge()}*/}
         </Modal>
       </div>
         
