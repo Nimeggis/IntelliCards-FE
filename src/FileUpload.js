@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import Cards from './Cards/Cards';
 import Icon from './img/ic-icon-header.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import GaugeChart from 'react-gauge-chart'
 import axios from 'axios';
+import { MDBSpinner, MDBBtn } from 'mdb-react-ui-kit';
 
 
 
@@ -13,6 +13,8 @@ const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showCards, setShowCards] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
   const [result, setResult] = useState(0)
   const [data, setData] = useState([])
 
@@ -85,6 +87,10 @@ const FileUpload = () => {
     
         console.log("Sending request:", request.data);
         setData(request.data);
+
+        setShowModal(true)
+        setShowSpinner(false);
+        setShowCards(true);
       } catch (error) {
         console.error("Upload failed:", error);
       }
@@ -101,8 +107,16 @@ const FileUpload = () => {
           onHide={() => setShowModal(false)} 
           className="w-100 p-3" 
           style={{ color: "#fff" }}>
-            <Cards result={result} setResult={setResult} data={data}/>
+            { showCards && <Cards result={result} setResult={setResult} data={data}/>}
             {/*{showModal && renderGauge()}*/}
+            <div style={{display: 'flex', alignItems: 'center', height: '100%', position: 'absolute'}}>
+              {showSpinner && 
+              <MDBBtn disabled>
+                <MDBSpinner grow size='sm' role='status' tag='span' className='me-2' />
+                Loading...
+              </MDBBtn>
+              }
+            </div>
         </Modal>
       </div>
         
@@ -111,7 +125,11 @@ const FileUpload = () => {
 
   const popUpCard = (File) => {
     setSelectedFile(File)
+
     setShowModal(true);
+    setShowCards(false);
+    setShowSpinner(true);
+    console.log("spinner", showSpinner);
   }
 
   return (
@@ -158,6 +176,7 @@ const FileUpload = () => {
         &copy; {new Date().getFullYear()} Iteratec Cloud-Hackathon. All rights reserved.
       </footer>
       {showModal && renderModal()}
+
     </div>
   );
 };
